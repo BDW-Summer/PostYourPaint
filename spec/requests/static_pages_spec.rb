@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+
+  let(:base_title) {"Post Your Paint"}
+
   describe "Home page" do
     it "should have the h1 'Paint App'" do
         visit '/static_pages/home'
@@ -12,7 +15,7 @@ describe "StaticPages" do
     it "should have the title 'Home'" do 
         visit '/static_pages/home'
         page.should have_selector('title',
-                    :text => "Post Your Paint | Home")
+                    :text => "#{base_title} | Home")
     end
   end
   
@@ -24,7 +27,7 @@ describe "StaticPages" do
     it "should have the title 'FAQ'" do 
         visit '/static_pages/faq'
         page.should have_selector('title',
-                    :text => "Post Your Paint | FAQ")
+                    :text => "#{base_title} | FAQ")
     end
   end
 
@@ -36,7 +39,7 @@ describe "StaticPages" do
     it "should have the title 'About'" do 
         visit '/static_pages/about'
         page.should have_selector('title',
-                    :text => "Post Your Paint | About")
+                    :text => "#{base_title} | About")
     end
   end
 end
