@@ -1,9 +1,15 @@
 PaintApp::Application.routes.draw do
-  get "static_pages/home"
 
-  get "static_pages/faq"
-  
-  get "static_pages/about"
+  get "users/new"
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  root to: 'static_pages#home'
+
+  match '/signup',  to: 'users#new'
+  match '/faq',     to: 'static_pages#faq'
+  match '/about',   to: 'static_pages#about'
+  match '/terms',   to: 'static_pages#terms'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,10 +57,6 @@ PaintApp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
