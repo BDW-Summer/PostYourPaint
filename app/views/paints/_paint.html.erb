@@ -1,0 +1,15 @@
+<li>
+    <span class="content"><%= paint.color_family %></span>
+    <span class="content"><%= paint.name %></span>
+    <span class="content"><%= paint.hex %></span>
+    <span class="content"><%= paint.location %></span>
+    <span class="content"><%= paint.quantity %></span>
+    <span class="content"><%= paint.additional_info %></span>
+    <span class="timestamp">Posted <%= time_ago_in_words(paint.created_at) %> ago.</span>
+    
+    <% if current_user?(paint.user) %>
+        <%= link_to "delete", paint, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: paint.name %>
+        <% end %>
+</li>

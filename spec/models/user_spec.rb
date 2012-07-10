@@ -26,6 +26,8 @@ describe User do
     it { should respond_to(:remember_token) }
     it { should respond_to(:admin) }
     it { should respond_to(:authenticate) }
+    it { should respond_to(:paints) }
+    it { should respond_to(:inventory) }
 
     it { should be_valid }
     it { should_not be_admin }
@@ -120,5 +122,35 @@ describe User do
     describe "remember token" do 
         before { @user.save }
         its(:remember_token) { should_not be_blank }
+    end
+    
+    describe "paint associations" do 
+        before { @user.save }
+        let!(:older_paint) do 
+            FactoryGirl.create(:paint, user: @user, created_at: 1.day.ago)
+        end
+        let!(:newer_paint) do 
+            FactoryGirl.create(:paint, user: @user, created_at: 1.hour.ago)
+        end
+        
+        it "should have the right paints in the right order" do 
+            @user.paints.should == [newer_paint, older_paint]
+        end
+        
+        it "should destroy associated paints" do 
+            paints = @user.paints
+            @user.destroy
+            paints.each do |paint|
+                Paint.find_by_id(paint.id).should be_nil
+            end
+        end
+        
+        describe "my paints" do
+            let(:unfollowed_post) do 
+                FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+            end
+         its(:inventory) { should include(newer_paint) }
+         its(:inventory) { should include(older_paint) }
+        end
     end
 end

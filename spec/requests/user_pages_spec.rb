@@ -50,10 +50,29 @@ describe "User pages" do
   
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:p1) { FactoryGirl.create(:paint,  user: user, color_family: "Reds", name: "Royal Red", hex: "FF0022", location: 80304, quantity: 2, additional_info: "Yeah this is some legit paint. You should hop on this before it gets snatched up") }
+    let!(:p2) { FactoryGirl.create(:paint,  user: user, color_family: "Reds", name: "Royal Red", hex: "FF0022", location: 80304, quantity: 2, additional_info: "Yeah this is some legit paint. You should hop on this before it gets snatched up") }
+    
     before { visit user_path(user) }
     
     it { should have_selector('h1',    text: user.email) }
     it { should have_selector('title', text: user.email) }
+    
+    describe "paints" do 
+        it { should have_content(p1.color_family) }
+        it { should have_content(p1.name) }
+        it { should have_content(p1.hex) }
+        it { should have_content(p1.location) }
+        it { should have_content(p1.quantity) }
+        it { should have_content(p1.additional_info) }
+        it { should have_content(p2.color_family) }
+        it { should have_content(p2.name) }
+        it { should have_content(p2.hex) }
+        it { should have_content(p2.location) }
+        it { should have_content(p2.quantity) }
+        it { should have_content(p2.additional_info) }
+        it { should have_content(user.paints.count) }
+    end
   end
   
   describe "signup page" do

@@ -8,4 +8,15 @@ FactoryGirl.define do
         admin true
       end
   end
+  
+  factory :paint do 
+        color_family "Reds"
+        name "Royal Red"
+        hex "FF00ee"
+        location 80304
+        quantity 2
+        additional_info "Yeah this is some legit paint. You should hop on this before it gets snatched up"
+        user
+  end       
+    
 end
