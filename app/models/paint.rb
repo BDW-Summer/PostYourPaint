@@ -2,8 +2,12 @@ class Paint < ActiveRecord::Base
     attr_accessible :color_family, :name, :hex, :location, :quantity, :additional_info
     belongs_to :user
     
-    validates :name, presence: true
     validates :user_id, presence: true
-    
+    validates :name, presence: true
+    validates :hex, presence: true
+    validates :location, presence: true
+    validates :quantity, presence: true
+    validates :additional_info, presence: true
+
     default_scope order: 'paints.created_at DESC'
 end
