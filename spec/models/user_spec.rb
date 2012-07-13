@@ -2,10 +2,13 @@
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  email      :string(255)
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id              :integer         not null, primary key
+#  email           :string(255)
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean         default(FALSE)
 #
 
 require 'spec_helper'
@@ -26,6 +29,8 @@ describe User do
     it { should respond_to(:remember_token) }
     it { should respond_to(:admin) }
     it { should respond_to(:authenticate) }
+    it { should respond_to(:paints) }
+    it { should respond_to(:inventory) }
 
     it { should be_valid }
     it { should_not be_admin }
@@ -120,5 +125,39 @@ describe User do
     describe "remember token" do 
         before { @user.save }
         its(:remember_token) { should_not be_blank }
+    end
+    
+    describe "paint associations" do 
+        
+        before { @user.save }
+        let!(:older_paint) do 
+            FactoryGirl.create(:paint, user: @user, created_at: 1.day.ago)
+        end
+        let!(:newer_paint) do 
+            FactoryGirl.create(:paint, user: @user, created_at: 1.hour.ago)
+        end
+        
+        it "should have the right paints in the right order" do 
+            @user.paints.should == [newer_paint, older_paint]
+        end
+        
+        it "should destroy associated paints" do 
+            paints = @user.paints
+            @user.destroy 
+            paints.each do |paint|
+                Paint.find_by_id(paint.id).shoud be_nil
+            end
+        end
+        
+        describe "inventory" do
+            let(:unfollowed_paint) do 
+                FactoryGirl.create(:paint, user: FactoryGirl.create(:user))
+            end
+        
+            its(:inventory) { should include(newer_paint) }            
+            its(:inventory) { should include(older_paint) }            
+            its(:inventory) { should_not include(unfollowed_paint) }            
+
+        end
     end
 end

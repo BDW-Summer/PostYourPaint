@@ -1,0 +1,24 @@
+<%= form_for(@paint) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div id="add_paint_form" class="field span6 offset3">
+        <%= f.label :color_family %>
+        <%= f.text_field :color_family, placeholder: "Reds, Blues, Greens, etc..." %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Royal Blue, Off White, etc..." %>
+
+        <%= f.label :hex %>
+        <%= f.text_field :hex, placeholder: "FF0022, etc..." %>
+
+        <%= f.label :location %>
+        <%= f.text_field :location, placeholder: "Your Zip Code" %>
+
+        <%= f.label :quantity %>
+        <%= f.text_field :quantity, placeholder: "How many gallons?" %>
+
+        <%= f.label :additional_info %>
+        <%= f.text_area :additional_info, placeholder: "Here you can fill in additional information like Brand, finish, age of paint etc..." %>
+
+        <%= f.submit "Add My Paint", class: "btn btn-large btn-primary" %>
+    <% end %>
+    </div>

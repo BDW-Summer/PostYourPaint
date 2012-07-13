@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user,    only: [:index, :edit, :update]  
+  before_filter :signed_in_user,    only: [:index, :edit, :update, :destroy]  
   before_filter :correct_user,      only: [:edit, :update]
   before_filter :admin_user,        only: :destroy
   
   def show
     @user = User.find(params[:id])
+    @paint = current_user.paints.build
+    @inventory_items = @user.inventory.paginate(page: params[:page])
   end
   
   def new
@@ -34,6 +36,11 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+        #handle a successful update
+    else
+        render 'edit'
+    end
   end
   
   def update 
@@ -47,14 +54,12 @@ class UsersController < ApplicationController
     end
   end 
   
-  private 
-    def signed_in_user
-        unless signed_in?
-            store_location
-            redirect_to signin_path, notice: "Please sign in."
-        end
-    end
-    
+  private   
+  
+#     def signed_in_user
+#         redirect_to signin_path, notice: "Please sign in." unless signed_in?
+#     end
+      
     def correct_user
         @user = User.find(params[:id])
         redirect_to(root_path) unless current_user?(@user)

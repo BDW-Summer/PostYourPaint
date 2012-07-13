@@ -1,0 +1,2 @@
+module PaintsHelper
+end
