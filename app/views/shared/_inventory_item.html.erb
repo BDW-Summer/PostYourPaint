@@ -7,7 +7,7 @@
     <span class="content"><%= inventory_item.hex %></span>
     <span class="content"><%= inventory_item.location %></span>
     <span class="content"><%= inventory_item.quantity %></span>
-    <span class="content"><%= inventory_item.additional_info %></span>
+    <span class="content"><%= wrap(inventory_item.additional_info) %></span>
     <span class="timestamp">
         Posted <%= time_ago_in_words(inventory_item.created_at) %> ago.
     </span>
