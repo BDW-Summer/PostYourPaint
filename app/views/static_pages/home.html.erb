@@ -1,30 +1,25 @@
-<% if signed_in? %>
-    <div class="row">
-        <aside class="span4">
-            <section>
-                <%= render 'shared/user_info' %>
-            </section>
-            <section>
-                <%= render 'shared/paint_form' %>
-            </section>
-        </aside>
-        <div class="span8">
-            <h3>Inventory</h3>
-            <%= render 'shared/inventory' %>
-        </div>
+<div class="center hero-unit">
+  <h1>Welcome to the Paint App</h1>
+
+  <h2>Find and Post paint in your neighborhood</h2>
+
+  <%= link_to "Sign up now to Post", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<div class="row">
+    <div class="span12">
+        <%= link_to "Reds", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Oranges", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Yellows", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Greens", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Blues", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Purples", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Blacks", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Greys", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Whites", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Creams", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Browns", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Other", signup_path, class: "btn btn-large disabled  span3" %>
     </div>
-<% else %>
-    <div class="center hero-unit">
-      <h1>Welcome to the Paint App</h1>
-    
-      <h2>
-        This is the home page for the
-        <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-        sample application.
-      </h2>
-    
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-    </div>
-    
-    <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
-<% end %>
+</div>
+

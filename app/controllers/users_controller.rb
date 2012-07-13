@@ -4,8 +4,10 @@ class UsersController < ApplicationController
   before_filter :admin_user,        only: :destroy
   
   def show
-    @user = User.find(params[:id])
-    @paints = @user.paints.paginate(page: params[:page])
+      if signed_in?
+        @paint = current_user.paints.build
+        @inventory_items = current_user.inventory.paginate(page: params[:page])
+      end
   end
   
   def new
