@@ -3,9 +3,9 @@ class Paint < ActiveRecord::Base
     belongs_to :user
     
     validates :user_id, presence: true
-    validates :name, presence: true
-    validates :hex, presence: true
-    validates :location, presence: true
+    validates :name, presence: true, length: { maximum: 50 }
+    validates :hex, presence: true, length: { is: 6 }
+    validates :location, presence: true, length: { is: 5 }
     validates :quantity, presence: true
     validates :additional_info, presence: true
 
