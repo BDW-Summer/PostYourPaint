@@ -1,53 +1,50 @@
 require 'spec_helper'
 
-describe "Paint pages" do
+describe "Paint Pages" do
 
-  subject { page }
-
-  describe "paint_new page" do
-    before { visit paint_new_path }
-
-    it { should have_selector('h1',    text: 'Add Paint') }
-    it { should have_selector('title', text: full_title('Add Paint')) }
-  end
-  
-  describe "paint_new" do 
+    subject { page }
     
-    before { visit paint_new_path }
+    let(:user) { FactoryGirl.create(:user) }
+    before { sign_in user }
     
-    let(:submit) { "Add My Paint" }
-    
-    describe "with invalid information" do 
-        it "should not create a paint" do 
-            expect { click_button :submit }.not_to change(Paint, :count)
-        end
-    end
-    
-    describe "with valid information" do 
-        before do 
-            fill_in "Color family",         with: "Neon"
-            fill_in "Name",                 with: "Brightness"
-            fill_in "Hex",                  with: "FF00FF"
-            fill_in "Location",             with: 80304
-            fill_in "Quantity",             with: 2
-            fill_in "Additional info",      with: "Yeah this is neon paint biatch"
-        end
-        
-        it "should create a paint" do 
-            expect { click_button submit }.to change(Paint, :count).by(1)
-        end
-    end
-  end
-  
-  describe "paint destruction" do 
-    before { FactoryGirl.create(:paint, user: user) }
-    
-    describe "as correct user" do 
+    describe "paint creation" do 
         before { visit root_path }
         
-        it "should delete a paint" do 
-            expect { click_link "delete" }.should change(Paint, :count).by(-1)
+        describe "with invalid information" do 
+        
+            it "should not create a paint" do 
+                expect { click_button "Post" }.should_not change(Paint, :count)
+            end
+            
+            describe "error messages" do 
+                before { click_button "Post" }
+                it { should have_content('error') }
+            end
+        end
+        
+        describe "with valid information" do 
+        
+            before { fill_in 'paint_color_family', with: "Reds" }
+            before { fill_in 'paint_name', with: "Another Red" }
+            before { fill_in 'paint_hex', with: "002211" }
+            before { fill_in 'paint_location', with: "80303" }
+            before { fill_in 'paint_quantity', with: "5" }
+            before { fill_in 'paint_additional_info', with: "I added some info here" }
+            it "should create a paint" do 
+                expect { click_button "Post" }.should change(Paint, :count).by(1)
+            end
         end
     end
-  end
+    
+    describe "paint destruction" do 
+        before { FactoryGirl.create(:paint, user:user) }
+        
+        describe "as correct user" do
+            before { visit root_path }
+            
+            it "should delete a paint" do 
+                expect { click_link "delete" }.should change(Paint, :count).by(-1)
+            end           
+        end
+    end
 end

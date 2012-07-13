@@ -52,6 +52,7 @@ describe "Authentication" do
         describe "for non-signed-in users" do 
             let(:user) { FactoryGirl.create(:user) }
             
+            
             describe "in the Users controller" do 
                 
                 describe "visiting the edit page" do 
@@ -67,6 +68,19 @@ describe "Authentication" do
                 describe "visiting the user index" do
                     before { visit users_path }
                     it { should have_selector('title', text: 'Sign in')}
+                end
+            end
+            
+            describe "in the Paints controller" do
+            
+                describe "submitting to the create action" do  
+                    before { post paints_path }
+                    specify { response.should redirect_to(signin_path) }
+                end
+                
+                describe "submitting to the destroy action" do 
+                    before { delete paint_path(FactoryGirl.create(:paint)) }
+                    specify { response.should redirect_to(signin_path) }
                 end
             end
             

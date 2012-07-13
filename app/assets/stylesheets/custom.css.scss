@@ -203,9 +203,13 @@ input, textarea, select, .uneditable-input {
 .timestamp {
   color: $grayLight;
 }
-
-#add_paint_form {
-    textarea {
-        height: 100px;
-    }
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
 }

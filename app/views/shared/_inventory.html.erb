@@ -1,9 +1,6 @@
 <% if @inventory_items.any? %>
     <ol class="paints">
-        <%= render partial: 'shared/inventory_items', collection: @inventory_items %>
+        <%= render partial: 'shared/inventory_item', collection: @inventory_items %>
     </ol>
     <%= will_paginate @inventory_items %>
-<% else %>
-    You don't have any paint, <%= link_to "add some", paint_new_path %> now!
 <% end %>
- 

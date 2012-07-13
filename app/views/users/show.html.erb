@@ -10,10 +10,13 @@
                                      class: "btn btn-large btn-primary" %>
         </section>
     </aside>
-    <% if signed_in? %>
-        <div class="span8">
-            <h3>Inventory</h3>
-            <%= render 'shared/inventory' %>
-        </div>
-    <% end %>
+    <div class="span8">
+        <% if @user.paints.any? %>
+            <h3>Paints (<%= @user.paints.count %>)</h3>
+            <ol class="paints">
+                <%= render @paints %>
+            </ol>
+            <%= will_paginate @paints %>
+        <% end %>
+    </div>
 </div>

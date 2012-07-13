@@ -128,7 +128,6 @@ describe User do
     end
     
     describe "paint associations" do 
-        
         before { @user.save }
         let!(:older_paint) do 
             FactoryGirl.create(:paint, user: @user, created_at: 1.day.ago)
@@ -143,21 +142,18 @@ describe User do
         
         it "should destroy associated paints" do 
             paints = @user.paints
-            @user.destroy 
+            @user.destroy
             paints.each do |paint|
-                Paint.find_by_id(paint.id).shoud be_nil
+                Paint.find_by_id(paint.id).should be_nil
             end
         end
         
-        describe "inventory" do
-            let(:unfollowed_paint) do 
-                FactoryGirl.create(:paint, user: FactoryGirl.create(:user))
+        describe "my paints" do
+            let(:unfollowed_post) do 
+                FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
             end
-        
-            its(:inventory) { should include(newer_paint) }            
-            its(:inventory) { should include(older_paint) }            
-            its(:inventory) { should_not include(unfollowed_paint) }            
-
+         its(:inventory) { should include(newer_paint) }
+         its(:inventory) { should include(older_paint) }
         end
     end
 end

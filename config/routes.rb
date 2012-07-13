@@ -4,7 +4,7 @@ PaintApp::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :paints
+  resources :paints, only: [:create, :destroy]
   
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

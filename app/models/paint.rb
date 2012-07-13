@@ -14,7 +14,6 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #
-
 class Paint < ActiveRecord::Base
     attr_accessible :color_family, :name, :hex, :location, :quantity, :additional_info
     belongs_to :user
@@ -26,5 +25,6 @@ class Paint < ActiveRecord::Base
     validates :location, presence: true, length: { is: 5 }
     validates :quantity, presence: true
     validates :additional_info, presence: true
+
     default_scope order: 'paints.created_at DESC'
 end

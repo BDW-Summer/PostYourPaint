@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @paints = current_user.paints.build
-    @inventory_items = @user.inventory.paginate(page: params[:page])
+    @paints = @user.paints.paginate(page: params[:page])
   end
   
   def new
@@ -54,12 +53,16 @@ class UsersController < ApplicationController
     end
   end 
   
+<<<<<<< HEAD
   private   
   
 #     def signed_in_user
 #         redirect_to signin_path, notice: "Please sign in." unless signed_in?
 #     end
       
+=======
+  private     
+>>>>>>> 7b8c75ca73949e512e2b7c6898c24ee63f70e5bc
     def correct_user
         @user = User.find(params[:id])
         redirect_to(root_path) unless current_user?(@user)

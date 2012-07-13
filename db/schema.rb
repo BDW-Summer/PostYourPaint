@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707203552) do
+ActiveRecord::Schema.define(:version => 20120708223045) do
+
+  create_table "paints", :force => true do |t|
+    t.string   "color_family"
+    t.string   "name"
+    t.string   "hex"
+    t.boolean  "available"
+    t.integer  "location"
+    t.integer  "quantity"
+    t.text     "additional_info"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "paints", ["user_id", "created_at"], :name => "index_paints_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "email"
