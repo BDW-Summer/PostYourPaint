@@ -4,5 +4,11 @@
     <p class="hex"><%= inventory_items.hex %></p>
     <p class="location"><%= inventory_items.location %></p>
     <p class="quantity"><%= inventory_items.quantity %></p>
-    <p class="additional_info"><%= inventory_items.additional_info %></p>
+    <p class="additional_info"><%= wrap(inventory_items.additional_info) %></p>
+
+    <% if current_user?(inventory_item.user) %>
+        <%= link_to "delete", invnetory_item, method: :delete,
+                                         data: { confirm: "You sure?" },
+                                         title: inventory_item.name %>
+    <% end %>
 </li>

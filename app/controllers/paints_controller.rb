@@ -1,5 +1,6 @@
 class PaintsController < ApplicationController
 before_filter :signed_in_user, only: [:create, :edit, :destroy]
+before_filter :correct_user,   only: [:edit, :destroy]
 
   def new
     @paint = Paint.new
@@ -24,6 +25,14 @@ before_filter :signed_in_user, only: [:create, :edit, :destroy]
   end
   
   def destroy 
+    @paint.destroy 
+    redirect_to root_path
   end
+  
+  private 
+    def correct_user
+        @paint = current_user.paints.find_by_id(params[:id])
+        redirect_to root_path if @paint.nil?
+    end
   
 end

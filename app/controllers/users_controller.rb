@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @paint = current_user.paints.build
+    @paints = current_user.paints.build
     @inventory_items = @user.inventory.paginate(page: params[:page])
   end
   

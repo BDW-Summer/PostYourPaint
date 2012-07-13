@@ -38,4 +38,16 @@ describe "Paint pages" do
         end
     end
   end
+  
+  describe "paint destruction" do 
+    before { FactoryGirl.create(:paint, user: user) }
+    
+    describe "as correct user" do 
+        before { visit root_path }
+        
+        it "should delete a paint" do 
+            expect { click_link "delete" }.should change(Paint, :count).by(-1)
+        end
+    end
+  end
 end
