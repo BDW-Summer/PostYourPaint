@@ -2,7 +2,17 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
         <%= f.label :color_family %>
-        <%= f.text_field :color_family, placeholder: "Reds, Blues, Greens, etc..." %>
+        <%= select_tag(:color_family, options_for_select([['Red', 1],
+                                                            ['Orange', 2], 
+                                                            ['Yellow', 3], 
+                                                            ['Green', 4], 
+                                                            ['Blue', 5], 
+                                                            ['Purple', 6], 
+                                                            ['Black', 7], 
+                                                            ['Grey', 8], 
+                                                            ['White', 9], 
+                                                            ['Cream', 10],
+                                                            ['Brown', 12]])) %>
     </div>
      <div class="field">
         <%= f.label :name %>

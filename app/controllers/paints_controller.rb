@@ -6,7 +6,7 @@ class PaintsController < ApplicationController
         @paint = current_user.paints.build(params[:paint])
         if @paint.save 
             flash[:success] = "Paint Created!"
-            redirect_to root_path
+            redirect_to current_user
         else
             @inventory_items = []
             render 'static_pages/home'
@@ -15,13 +15,13 @@ class PaintsController < ApplicationController
     
     def destroy 
         @paint.destroy
-        redirect_to root_path
+        redirect_to current_user
     end
     
     private 
     
         def correct_user
             @paint = current_user.paints.find_by_id(params[:id])
-            redirect_to root_path if @paint.nil?
+            redirect_to current_user if @paint.nil?
         end
 end

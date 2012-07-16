@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="span12">
-        <%= link_to "Reds", signup_path, class: "btn btn-large span3" %>
+        <%= link_to "Reds", Paint.find_all_by_color_family(:red), class: "btn btn-large span3" %>
         <%= link_to "Oranges", signup_path, class: "btn btn-large span3" %>
         <%= link_to "Yellows", signup_path, class: "btn btn-large span3" %>
         <%= link_to "Greens", signup_path, class: "btn btn-large span3" %>
