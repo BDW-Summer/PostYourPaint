@@ -9,6 +9,8 @@ PaintApp::Application.routes.draw do
   # just remember to delete public/index.html.
   root to: 'static_pages#home'
 
+  match '/family/:paint_family',  to: 'paints#by_family'
+
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

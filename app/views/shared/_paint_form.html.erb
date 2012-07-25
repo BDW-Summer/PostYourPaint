@@ -2,7 +2,7 @@
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
         <%= f.label :color_family %>
-        <%= f.collection_select(:family_id, @color_families, :id, :name, :include_blank => "Please select") %>
+        <%= f.collection_select(:family_id, @color_families, :id, :family, :include_blank => "Please select") %>
 
     </div>
      <div class="field">

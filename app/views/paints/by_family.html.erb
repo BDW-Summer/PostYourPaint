@@ -1,0 +1,27 @@
+<% @paints.each do |paint| %>
+
+<li id="<% paint.id %>" class="paint-post clearfix" >
+    <section class="swatch-container">
+        <div class="swatch">
+            <figure class="swatch-color"></figure>
+            <figcaption class="swatch-hex">#<%= paint.hex %></figcaption>
+        </div>
+    </section>
+    <section class="paint-details-container">
+        <ul class="paint-post-info clearfix">
+            <li><%= paint.name %></li>
+            <li><%= paint.location %></li>
+            <li><%= paint.quantity %> Gal</li>
+            <li class="right"><a href="mailto:?subject=Hi, I'm interested in the paint you posted on Post Your Paint">Contact Owner</a> </li>
+        </ul>
+        <p><%= wrap(paint.additional_info) %></p>
+        <p>Posted <%= time_ago_in_words(paint.created_at) %> ago.
+        <% if current_user?(paint.user) %>
+            <%= link_to "delete", paint, method: :delete,
+                                                  data: { confirm: "You sure?" },
+                                                  title: paint.name %>
+        <% end %>
+        </p>
+    </section>
+</li>
+<% end %>
