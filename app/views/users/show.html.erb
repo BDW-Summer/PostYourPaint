@@ -2,13 +2,12 @@
     <div class="row">
         <aside class="span4">
             <section>
-                <%= render 'user_info' %>
-            </section>
-            <section>
                 <%= render 'shared/paint_form' %>
             </section>
         </aside>
         <div class="span8">
+            <h3>Account Info</h3>
+            <%= render 'user_info' %>
             <h3>Inventory</h3>
             <%= render 'shared/inventory' %>
         </div>

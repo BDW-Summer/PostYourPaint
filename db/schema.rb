@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120708223045) do
+ActiveRecord::Schema.define(:version => 20120716192802) do
+
+  create_table "color_families", :force => true do |t|
+    t.string   "family"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "paints", :force => true do |t|
     t.string   "color_family"
@@ -24,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120708223045) do
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "family_id"
   end
 
   add_index "paints", ["user_id", "created_at"], :name => "index_paints_on_user_id_and_created_at"

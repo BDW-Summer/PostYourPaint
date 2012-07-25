@@ -10,13 +10,23 @@ FactoryGirl.define do
   end
   
   factory :paint do 
-        color_family "Reds"
+#         color_family "Reds"
+        paint.association :color_family
         name "Royal Red"
         hex "FF00ee"
         location 80304
         quantity 2
         additional_info "Yeah this is some legit paint. You should hop on this before it gets snatched up"
         user
-  end       
+  end    
+  
+  factory.sequence :color_family_family do |n|
+        "#{n}"
+  end
+  
+  factory.define :color_family do |c|
+    c.family Factory.next :color_family_family
+  end
+  
     
 end

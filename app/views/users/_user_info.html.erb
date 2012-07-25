@@ -1,4 +1,4 @@
-<h1>
-    <%= current_user.email %>
-</h1>
-<span><%= link_to "edit", edit_user_path(current_user) %></span>
+<p>
+    Email Address: <%= current_user.email %> <span><%= link_to "edit", edit_user_path(current_user) %></span>
+</p>
+

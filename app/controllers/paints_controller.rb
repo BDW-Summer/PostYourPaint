@@ -1,6 +1,11 @@
 class PaintsController < ApplicationController
-    before_filter :signed_in_user,  only: [:create, :destroy]
+    before_filter :signed_in_user,  only: [:new, :create, :destroy]
     before_filter :correct_user,    only: :destroy
+    before_filter :prepare_color_families
+        
+   def new 
+    @paint = Paint.new
+   end     
         
     def create 
         @paint = current_user.paints.build(params[:paint])
@@ -19,6 +24,10 @@ class PaintsController < ApplicationController
     end
     
     private 
+    
+        def prepare_color_families
+            @color_families = ColorFamily.all
+        end
     
         def correct_user
             @paint = current_user.paints.find_by_id(params[:id])

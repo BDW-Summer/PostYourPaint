@@ -1,9 +1,10 @@
 class Paint < ActiveRecord::Base
-    attr_accessible :color_family, :name, :hex, :location, :quantity, :additional_info
+    attr_accessible :family_id, :name, :hex, :location, :quantity, :additional_info
     belongs_to :user
+    belongs_to :color_family
     
     validates :user_id, presence: true
-    validates :name, presence: true, length: { maximum: 50 }
+    validates :name, presence: true, length: { maximum: 30 }
     validates :hex, presence: true, length: { is: 6 }
     validates :location, presence: true, length: { is: 5 }
     validates :quantity, presence: true

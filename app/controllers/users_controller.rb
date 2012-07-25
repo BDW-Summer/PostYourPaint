@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         @paint = current_user.paints.build
         @inventory_items = current_user.inventory.paginate(page: params[:page])
       end
+      @color_families = ColorFamily.all
   end
   
   def new

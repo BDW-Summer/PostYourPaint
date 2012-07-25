@@ -1,0 +1,23 @@
+<h1>Listing color_families</h1>
+
+<table>
+  <tr>
+    <th>Family</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @color_families.each do |color_family| %>
+  <tr>
+    <td><%= color_family.family %></td>
+    <td><%= link_to 'Show', color_family %></td>
+    <td><%= link_to 'Edit', edit_color_family_path(color_family) %></td>
+    <td><%= link_to 'Destroy', color_family, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Color family', new_color_family_path %>

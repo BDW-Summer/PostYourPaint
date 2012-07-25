@@ -1,25 +1,129 @@
-<div class="center hero-unit">
-  <h1>Welcome to the Paint App</h1>
-
-  <h2>Find and Post paint in your neighborhood</h2>
-
-  <%= link_to "Sign up now to Post", signup_path, class: "btn btn-large btn-primary" %>
+<h2>Find and Post paint in your neighborhood</h2>
+<div class="content">
+    <section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-red">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>RED</h1>
+        </a>
+    </section>
+    <section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-orange">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>ORANGE</h1>
+        </a>
+    </section><section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-yellow">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>YELLOW</h1>
+        </a>
+    </section><section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-green">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>GREEN</h1>
+        </a>
+    </section><section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-blue">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>BLUE</h1>
+        </a>
+    </section><section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-purple">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>PURPLE</h1>
+        </a>
+    </section><section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-black">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>BLACK</h1>
+        </a>
+    </section><section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-grey">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>GREY</h1>
+        </a>
+    </section>
+    <section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-white">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>WHITE</h1>
+        </a>
+    </section>
+    <section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-cream">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>CREAM</h1>
+        </a>
+    </section>
+    <section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-brown">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>BROWN</h1>
+        </a>
+    </section>
+    <section class="swatch-container">
+        <a href="#" class="swatch">
+            <ul class="swatch-red">
+                <li class="lighter"></li>
+                <li class="normal"></li>
+                <li class="darker"></li>
+                <li class="darkest"></li>
+            </ul>
+            <h1>Other</h1>
+        </a>
+    </section>
 </div>
-
-<div class="row">
-    <div class="span12">
-        <%= link_to "Reds", Paint.find_all_by_color_family(:red), class: "btn btn-large span3" %>
-        <%= link_to "Oranges", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Yellows", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Greens", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Blues", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Purples", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Blacks", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Greys", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Whites", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Creams", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Browns", signup_path, class: "btn btn-large span3" %>
-        <%= link_to "Other", signup_path, class: "btn btn-large disabled  span3" %>
-    </div>
-</div>
-
