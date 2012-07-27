@@ -11,12 +11,13 @@ PaintApp::Application.routes.draw do
 
   match '/family/:paint_family',  to: 'paints#by_family'
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/faq',     to: 'static_pages#faq'
-  match '/about',   to: 'static_pages#about'
-  match '/terms',   to: 'static_pages#terms'
+  match '/signup',      to: 'users#new'
+  match '/signin',      to: 'sessions#new'
+  match '/signout',     to: 'sessions#destroy', via: :delete
+  match '/faq',         to: 'static_pages#faq'
+  match '/about',       to: 'static_pages#about'
+  match '/terms',       to: 'static_pages#terms'
+  match '/post_paint',  to: 'paints#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

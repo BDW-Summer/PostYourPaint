@@ -1,0 +1,10 @@
+<% if signed_in? %>
+    <div class="row">
+        <div class="span6 offset1">
+            <%= render 'shared/paint_form' %>
+        </div>
+    </div>
+<% else %>
+    <%= render signin_path %>
+
+<% end %>

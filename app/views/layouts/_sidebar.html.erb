@@ -1,13 +1,13 @@
 <nav id="sidebar">
     <ul id="main-nav" class="sidebar-nav-ul">
         <li><%= link_to "ABOUT",            about_path %></li>
-        <li><%= link_to "POST",       current_user %></li>
+        <li><%= link_to "POST",             post_paint_path %></li>
     <% if signed_in? %>
         <li><%= link_to "DASHBOARD",        current_user %></li>
         <li><%= link_to "SIGN OUT",         signout_path, method: "delete" %></li>
         
     <% else %>
-        <li><%= link_to "SING IN",          signin_path %></li>
+        <li><%= link_to "SIGN IN",          signin_path %></li>
     <% end %>
     </ul>
 </nav>
