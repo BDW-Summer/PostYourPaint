@@ -13,19 +13,7 @@
         <option>Yellows</option>
     </select>
     <input class="span2">
-    <select class="span2">
-        <option>< .25</option>
-        <option>.25</option>
-        <option>.5</option>
-        <option>.75</option>
-        <option>1</option>
-        <option>1.25</option>
-        <option>1.5</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
+        <%= select(:paint, :quantity, Paint::PAINT_QUANTITY) %>
     <button type="submit" class="btn">Filter</button>
     </form>
 

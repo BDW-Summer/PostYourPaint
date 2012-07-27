@@ -29,7 +29,7 @@ class PaintsController < ApplicationController
             redirect_to current_user
         else
             @inventory_items = []
-            render 'static_pages/home'
+            render 'new'
         end
     end
     

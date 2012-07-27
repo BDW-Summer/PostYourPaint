@@ -19,7 +19,7 @@
     </div>
     <div class="field">
         <%= f.label :quantity %>
-        <%= f.text_field :quantity, placeholder: "How many gallons?" %>
+        <%= select(:paint, :quantity, Paint::PAINT_QUANTITY) %>
     </div>
     <div class="field">
         <%= f.label :additional_info %>
