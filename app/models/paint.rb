@@ -1,5 +1,5 @@
 class Paint < ActiveRecord::Base
-    PAINT_QUANTITY = %w(1 2 3 4 5)
+    PAINT_QUANTITY = %w(.25 .5 .75 1 2 3 4 5)
     
     attr_accessible :family_id, :name, :hex, :location, :quantity, :additional_info
     belongs_to :user

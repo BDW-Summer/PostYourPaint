@@ -13,11 +13,15 @@
         <option>Yellows</option>
     </select>
     <input class="span2">
-        <%= select(:paint, :quantity, Paint::PAINT_QUANTITY) %>
+    <%= select(:paint, :quantity, Paint::PAINT_QUANTITY) %>
     <button type="submit" class="btn">Filter</button>
     </form>
 
 <% @paints.each do |paint| %>
+
+<ol class="paints">
+        <%= render partial: 'shared/inventory_item', collection: @inventory_items %>
+</ol>
 
 <li id="<% paint.id %>" class="paint-post clearfix" >
     <section class="swatch-container">
@@ -31,7 +35,7 @@
             <li><%= paint.name %></li>
             <li><%= paint.location %></li>
             <li><%= paint.quantity %> Gal</li>
-            <li class="right"><a href="mailto:?subject=Hi, I'm interested in the paint you posted on Post Your Paint">Contact Owner</a> </li>
+            <li class="right"><a href="mailto:<%= paint.user.email %>?subject=Hi, I'm interested in the paint you posted on Post Your Paint">Contact Owner</a> </li>
         </ul>
         <p><%= wrap(paint.additional_info) %></p>
         <p>Posted <%= time_ago_in_words(paint.created_at) %> ago.

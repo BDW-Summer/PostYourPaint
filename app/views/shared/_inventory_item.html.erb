@@ -10,7 +10,6 @@
             <li><%= inventory_item.name %></li>
             <li><%= inventory_item.location %></li>
             <li><%= inventory_item.quantity %> Gal</li>
-            <li class="right"><a href="mailto:?subject=Hi, I'm interested in the paint you posted on Post Your Paint">Contact Owner</a> </li>
         </ul>
         <p><%= wrap(inventory_item.additional_info) %></p>
         <p>Posted <%= time_ago_in_words(inventory_item.created_at) %> ago.

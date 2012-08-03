@@ -18,8 +18,8 @@
         <%= f.text_field :location, placeholder: "Your Zip Code" %>
     </div>
     <div class="field">
-        <%= f.label :quantity %>
-        <%= select(:paint, :quantity, Paint::PAINT_QUANTITY) %>
+        <%= f.label :quantity, "Quantity (in gallons)" %>
+        <%= select(:paint, :quantity, Paint::PAINT_QUANTITY, :include_blank => "Select quantity") %>
     </div>
     <div class="field">
         <%= f.label :additional_info %>
