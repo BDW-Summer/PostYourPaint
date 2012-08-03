@@ -1,0 +1,39 @@
+<% provide(:title, "Edit paint") %> 
+<h1>Edit your Paint</h1>
+
+
+<div class="row">
+    <div class="span6 offset1">
+        <%= form_for(@paint) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="field">
+                <%= f.label :color_family %>
+                <%= f.collection_select(:family_id, @color_families, :id, :family) %>
+        
+            </div>
+             <div class="field">
+                <%= f.label :name %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <%= f.label :hex %>
+                <%= f.text_field :hex %>
+            </div>
+            <div class="field">
+                <%= f.label :location %>
+                <%= f.text_field :location %>
+            </div>
+            <div class="field">
+                <%= f.label :quantity, "Quantity (in gallons)" %>
+                <%= select(:paint, :quantity, Paint::PAINT_QUANTITY ) %>
+            </div>
+            <div class="field">
+                <%= f.label :additional_info %>
+                <%= f.text_area :additional_info %>
+            </div>
+        
+            <%= f.submit "Update Paint", class: "btn btn-large btn-primary" %>
+        <% end %>
+    </div>
+</div>
+   

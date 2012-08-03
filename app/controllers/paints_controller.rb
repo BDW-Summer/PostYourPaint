@@ -1,6 +1,6 @@
 class PaintsController < ApplicationController
     before_filter :signed_in_user,  only: [:new, :create, :destroy]
-    before_filter :correct_user,    only: :destroy
+    before_filter :correct_user,    only: [:destroy, :edit, :update]
     before_filter :prepare_color_families
    
    def by_family
@@ -35,8 +35,23 @@ class PaintsController < ApplicationController
     
     def destroy 
         @paint.destroy
+        flash[:success] = "Paint deleted."
         redirect_to current_user
     end
+    
+  def edit
+    @paint = Paint.find(params[:id])
+  end
+  
+  def update 
+    @paint = Paint.find(params[:id])
+    if @paint.update_attributes(params[:paint])
+        flash[:success] = "Paint updated"
+        redirect_to current_user
+    else
+        render 'edit'
+    end
+  end
     
     private 
     

@@ -1,12 +1,12 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
   before_filter :signed_in_user,    only: [:index, :edit, :update]  
   before_filter :correct_user,      only: [:edit, :update]
   before_filter :admin_user,        only: :destroy
   
   def show
       if signed_in?
-        @paint = current_user.paints.build
-        @inventory_items = current_user.inventory.paginate(page: params[:page])
+#         @paint = current_user.paints.build
+        @inventory_items = current_user.paints.paginate(page: params[:page])
       end
       @color_families = ColorFamily.all
   end

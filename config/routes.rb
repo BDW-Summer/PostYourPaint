@@ -3,7 +3,7 @@ PaintApp::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :paints, only: [:new, :create, :destroy]
+  resources :paints
   
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
@@ -17,7 +17,6 @@ PaintApp::Application.routes.draw do
   match '/faq',         to: 'static_pages#faq'
   match '/about',       to: 'static_pages#about'
   match '/terms',       to: 'static_pages#terms'
-  match '/post_paint',  to: 'paints#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
