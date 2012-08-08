@@ -17,6 +17,7 @@ PaintApp::Application.routes.draw do
   match '/faq',         to: 'static_pages#faq'
   match '/about',       to: 'static_pages#about'
   match '/terms',       to: 'static_pages#terms'
+  match '/post_paint',  to: 'paints#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
